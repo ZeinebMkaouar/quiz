@@ -6,7 +6,7 @@
       <div class="difficulty-options">
         <div
           class="difficulty-option"
-          :class="{ 'selected': chosenDifficulty == difficulty.level }"
+          :class="{ selected: chosenDifficulty == difficulty.level }"
           v-for="(difficulty, index) in difficulties"
           :key="index"
           @click="setDifficulty(difficulty.level)"
@@ -47,30 +47,45 @@
           {{ type.name }}
         </div>
       </div>
+      <h2>Number Of Questions</h2>
+      <div class="types-container">
+        <div
+          class="setup-option"
+          :class="{ 'is-selected': chosenNum == num }"
+          v-for="(num, index) in nums"
+          :key="index"
+          @click="setNum(num)"
+        >
+          {{ num }}
+        </div>
+      </div>
 
-      <button class="button button--start" type="button" @click="startQuiz()">Start</button>
+      <button class="button button--start" type="button" @click="startQuiz()">
+        Start
+      </button>
     </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 const difficulties = [
-  { level: null, name: 'Any Difficulty' },
-  { level: 'easy', name: 'Easy' },
-  { level: 'medium', name: 'Medium' },
-  { level: 'hard', name: 'Hard' },
+  { level: null, name: "Any Difficulty" },
+  { level: "easy", name: "Easy" },
+  { level: "medium", name: "Medium" },
+  { level: "hard", name: "Hard" },
 ];
 
 const types = [
-  { type: null, name: 'Any Type' },
-  { type: 'multiple', name: 'Multiple Choice' },
-  { type: 'boolean', name: 'True/False' },
+  { type: null, name: "Any Type" },
+  { type: "multiple", name: "Multiple Choice" },
+  { type: "boolean", name: "True/False" },
 ];
+const nums = [5, 10, 15, 20];
 
 export default {
-  name: 'QuizApp',
+  name: "QuizApp",
   data() {
     return {
       isStarted: false,
@@ -80,6 +95,8 @@ export default {
       chosenDifficulty: null,
       chosenType: null,
       types: types,
+      nums: nums,
+      chosenNum: 5,
     };
   },
   mounted() {
@@ -87,7 +104,7 @@ export default {
   },
   methods: {
     init() {
-      const url = 'https://opentdb.com/api_category.php';
+      const url = "https://opentdb.com/api_category.php";
 
       axios
         .get(url)
@@ -97,12 +114,14 @@ export default {
           }
           this.categories = response.data.trivia_categories.map((category) => ({
             ...category,
-            name: category.name.replace(/\w+: /gi, ''),
+            name: category.name.replace(/\w+: /gi, ""),
           }));
         })
         .catch((error) => {
           console.error(error);
-          alert('Sorry, something went wrong trying to load the categories. Please try again.');
+          alert(
+            "Sorry, something went wrong trying to load the categories. Please try again."
+          );
         });
     },
     setCategory(category) {
@@ -114,14 +133,21 @@ export default {
     setType(type) {
       this.chosenType = type;
     },
+    setNum(num) {
+      this.chosenNum = num;
+    },
+
     startQuiz() {
       this.isStarted = true;
-      // Logic to start the quiz can go here
     },
     generateUrl() {
-      const difficultyParam = this.chosenDifficulty ? `&difficulty=${this.chosenDifficulty}` : '';
-      const categoryParam = this.chosenCategory ? `&category=${this.chosenCategory}` : '';
-      const typeParam = this.chosenType ? `&type=${this.chosenType}` : '';
+      const difficultyParam = this.chosenDifficulty
+        ? `&difficulty=${this.chosenDifficulty}`
+        : "";
+      const categoryParam = this.chosenCategory
+        ? `&category=${this.chosenCategory}`
+        : "";
+      const typeParam = this.chosenType ? `&type=${this.chosenType}` : "";
 
       return `https://opentdb.com/api.php?${categoryParam}${difficultyParam}${typeParam}`;
     },
@@ -147,7 +173,7 @@ export default {
     margin: 3rem auto 2rem;
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100px;
       margin: 1rem auto 0;
