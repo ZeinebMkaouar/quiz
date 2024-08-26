@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+
+ 
+  <QuizApp></QuizApp>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
+import QuizApp from './components/QuizApp.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    
+    QuizApp
   }
 }
 </script>
+<style lang="scss">
 
-<style>
+
 #app {
+  display: flex;
+  align-items: center;
+  justify-content: center; 
+  min-height: 100vh; 
+  padding: 2.5rem 0.625rem;
+  text-align: center;
   font-family: Avenir, Helvetica, Arial, sans-serif;
+  color: #fff;
+  background-color: #1ca99f;
+  letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
