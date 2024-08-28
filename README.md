@@ -21,7 +21,7 @@ npm run build
 npm run lint
 ```
 ### Live App
-https://quiz-6bp.pages.dev/
+https://quiz-application.pages.dev/
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
