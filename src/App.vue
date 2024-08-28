@@ -31,6 +31,5 @@ export default {
   background-color: #1ca99f;
   letter-spacing: 0.5px;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 </style>

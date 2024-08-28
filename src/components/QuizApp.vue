@@ -507,7 +507,7 @@ export default {
   font-weight: 600;
   color: #313030;
   background-color: #fff;
-  border-radius: 1px;
+  border-radius: 20px;
   &--option {
     max-width: 100%;
     padding: 1rem;
@@ -536,10 +536,10 @@ export default {
     }
   }
   &--correct {
-    background-color: #11b352;
+    background-color: #2da55d;
   }
   &--incorrect {
-    background-color: #d41f22;
+    background-color: #f8080c;
   }
 }
 .score {
@@ -584,9 +584,9 @@ export default {
 
   .button {
     margin-top: 3rem;
-    color: #fff;
-    background-color: #ef8156;
-    border: 2px solid #ef8156;
+    color: #000000;
+    background-color: #fff;
+    border: 2px solid #fff;
     border-radius: 5px;
     padding: 0.875rem 1.5rem;
     text-transform: uppercase;
